@@ -13,10 +13,21 @@ is based on the paper
 
 This implementation is **not** a converted FORTRAN-implementation, **neither** and interface for the FORTRAN-Routines. It was build from the ground up in C++11 and only needs the [Eigenlibrary](http://eigen.tuxfamily.org/) for the matrix operations.
 
-###Compiling under linux
+Eigen has been added as a git submodule and can automatically be acquired by executing ```git clone --recursive <this repository's URL>```.
+
+### Compiling under linux
+
+The easiest way to build is using CMake. Just ```cd``` into the project directory and run:
+```
+mkdir build
+cd build
+cmake ..
+make
+```
+An executable with the name *lbfgsb* will be created.
 
 
-To compile this with g++ make sure that you set the compiler flags:
+Otherwise, to compile this with g++ make sure that you set the compiler flags:
 
 ```g++ -O3 -Wall -std=c++11 -fopenmp```
 
@@ -33,7 +44,7 @@ MySolver.Solve(x,functionValue,functionGradient);
 ```
 See the file *main.cpp* for a full working example with bound. Unused bounds can be defined as ```INF```.
 
-###License
+### License
 ```
 Copyright (c) 2014 Patrick Wieschollek
 url: https://github.com/PatWie/LBFGSB
