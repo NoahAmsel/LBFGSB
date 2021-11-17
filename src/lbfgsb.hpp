@@ -43,6 +43,8 @@
  * (Byrd, Lu, Nocedal, Zhu)
  */
 
+namespace PatWieLBFGSB {
+
 class LBFGSB {
 
 	// contains options for optimization process
@@ -183,7 +185,7 @@ public:
 
 		}
 
-		dt_min = max(dt_min, 0);
+		dt_min = fmax(dt_min, 0.0);
 		t_old += dt_min;
 
 		Debug(SortedIndices[0]<< " "<< SortedIndices[1]);
@@ -214,11 +216,11 @@ public:
 		const unsigned int n = FreeVariables.size();
 		for (unsigned int i = 0; i < n; i++) {
 			if (du(i) > 0) {
-				alphastar = min(alphastar,
+				alphastar = fmin(alphastar,
 						(ub(FreeVariables[i]) - x_cp(FreeVariables[i]))
 								/ du(i));
 			} else {
-				alphastar = min(alphastar,
+				alphastar = fmin(alphastar,
 						(lb(FreeVariables[i]) - x_cp(FreeVariables[i]))
 								/ du(i));
 			}
@@ -438,5 +440,7 @@ public:
 
 	}
 };
+
+}
 
 #endif /* LBFGSB_H_ */

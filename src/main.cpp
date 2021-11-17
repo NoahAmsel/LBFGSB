@@ -27,12 +27,15 @@
 #include "meta.h"
 #include "lbfgsb.hpp"
 
+using namespace PatWieLBFGSB;
+
 /* this code will solve the optimization problem:
  *
  *
  * min <x,A*x> + <b,x>
  * s.t.  l <=  x <= r
  *
+ * Should give x = [-0.0171..., -0.1446...]
  */
 
 Matrix A(2, 2);
@@ -42,8 +45,8 @@ Vector l(2), r(2);
 void initConstants() {
 	A << 3, 3.1, 3.1, 10;
 	b << 1, 3;
-	l << -INF, 0;
-	r << INF, INF;
+	l << -10000.0, -10000.0;
+	r << 10000.0, 10000.0;
 }
 
 double Quadratic_ValueSimple(const Vector& x) {

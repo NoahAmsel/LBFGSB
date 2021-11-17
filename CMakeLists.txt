@@ -26,8 +26,8 @@ add_executable(lbfgsb ${MAIN_SOURCES})
 
 # Dependencies:
 
-target_include_directories(lbfgsb PRIVATE "ext/eigen")
-
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+target_link_libraries(lbfgsb Eigen3::Eigen)
 
 find_package(OpenMP)
 if(OPENMP_FOUND)

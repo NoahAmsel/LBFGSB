@@ -34,6 +34,8 @@
 #include <iostream>
 #include <vector>
 
+namespace PatWieLBFGSB {
+
 struct Options{
 	double tol;
 	double functol;
@@ -76,9 +78,6 @@ typedef std::function<void(const Eigen::VectorXd &x, Eigen::VectorXd &gradient)>
 #endif
 
 
-#define min(a,b) (((a)<(b))?(a):(b))
-#define max(a,b) (((a)>(b))?(a):(b))
-
 std::vector<int> sort_indexes(const std::vector< std::pair<int,double> > &v) {
   std::vector<int> idx(v.size());
   for (size_t i = 0; i != idx.size(); ++i)
@@ -87,5 +86,6 @@ std::vector<int> sort_indexes(const std::vector< std::pair<int,double> > &v) {
   return idx;
 }
 
+}
 
 #endif /* DEFINITIONS_H_ */
