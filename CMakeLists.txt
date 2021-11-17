@@ -9,19 +9,10 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-
-
-# Project source code:
-
-file(GLOB_RECURSE MAIN_SOURCES "src/*.hh" "src/*.cc" "src/*.h" "src/*.c" "src/*.hpp" "src/*.cpp")
-
-
-
-
 # Executable:
 
-add_executable(lbfgsb ${MAIN_SOURCES})
-
+add_executable(lbfgsb src/main.cpp)
+target_include_directories(lbfgsb PUBLIC include/)
 
 
 # Dependencies:
@@ -39,12 +30,5 @@ endif()
 
 target_compile_options(lbfgsb PRIVATE -O3 -Wall)
 
-
-# Make source files available for '<....>' includes:
-target_include_directories(lbfgsb PRIVATE "src")
-
-
-# Additional Linking
-
-#(none)
-
+# For other projects to include. There may be a better way...
+set(${PROJECT_NAME}_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/include)
