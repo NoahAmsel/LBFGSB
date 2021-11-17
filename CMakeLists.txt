@@ -29,6 +29,3 @@ endif()
 # Building:
 
 target_compile_options(lbfgsb PRIVATE -O3 -Wall)
-
-# For other projects to include. There may be a better way...
-set(${PROJECT_NAME}_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/include)
